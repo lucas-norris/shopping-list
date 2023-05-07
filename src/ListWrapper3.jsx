@@ -1,13 +1,14 @@
-import { useState } from 'react'
+import { useContext } from 'react'
 import ListForm from './ListForm'
 import List from './List'
+import DragDropContext from './DragDropContext'
 
 const ListWrapper3 = () => {
-  const [listItems, setListItems] = useState(['item 5'])
+  const dragInfo = useContext(DragDropContext)
 
   const addListItem = (input) => {
-    setListItems([...listItems, input])
-    console.log(listItems)
+    dragInfo.setListItems3([...dragInfo.listItems3, input])
+    console.log(dragInfo.listItems3)
   }
 
   return (
@@ -15,7 +16,7 @@ const ListWrapper3 = () => {
       <div className="wrapper">
         <h1>List 3</h1>
         <div className="ListWrapper">
-          <List listItems={listItems} />
+          <List listItems={dragInfo.listItems3} />
           <ListForm addListItem={addListItem} />
         </div>
       </div>
